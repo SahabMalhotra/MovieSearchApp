@@ -89,13 +89,13 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="356dp"
-        android:layout_height="0dp"
+        android:layout_width="371dp"
+        android:layout_height="56dp"
         android:layout_marginTop="640dp"
         android:background="@drawable/edittext_background"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
