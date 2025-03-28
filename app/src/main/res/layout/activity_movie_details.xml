@@ -1,6 +1,5 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
@@ -89,8 +88,8 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="371dp"
-        android:layout_height="56dp"
+        android:layout_width="382dp"
+        android:layout_height="62dp"
         android:layout_marginTop="640dp"
         android:background="@drawable/edittext_background"
         android:text="Back"

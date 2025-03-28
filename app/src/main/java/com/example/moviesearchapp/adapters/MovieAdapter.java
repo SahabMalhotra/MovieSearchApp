@@ -3,21 +3,18 @@ package com.example.moviesearchapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.moviesearchapp.MovieDetailsActivity;
-import com.example.moviesearchapp.R;
+import com.example.moviesearchapp.databinding.ItemMovieBinding;
 import com.example.moviesearchapp.models.Movie;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-    private List<Movie> movies;
-    private Context context;
+    private final List<Movie> movies;
+    private final Context context;
 
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
@@ -27,19 +24,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
-        return new MovieViewHolder(view);
+        ItemMovieBinding binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new MovieViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movies.get(position);
-        holder.title.setText(movie.getTitle());
-        holder.year.setText("Year: " + movie.getYear());
+        holder.binding.movieTitle.setText(movie.getTitle());
+        holder.binding.movieYear.setText("Year: " + movie.getYear());
+        holder.binding.movieRating.setText("Rating: " + movie.getRating());
 
-        Picasso.get().load(movie.getPosterUrl()).into(holder.poster);
+        Picasso.get().load(movie.getPosterUrl()).into(holder.binding.moviePoster);
 
-        holder.itemView.setOnClickListener(v -> {
+        holder.binding.getRoot().setOnClickListener(v -> {
             Intent intent = new Intent(context, MovieDetailsActivity.class);
             intent.putExtra("title", movie.getTitle());
             intent.putExtra("year", movie.getYear());
@@ -58,14 +56,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {
-        TextView title, year;
-        ImageView poster;
+        private final ItemMovieBinding binding;
 
-        public MovieViewHolder(@NonNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.movieTitle);
-            year = itemView.findViewById(R.id.movieYear);
-            poster = itemView.findViewById(R.id.moviePoster);
+        public MovieViewHolder(ItemMovieBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

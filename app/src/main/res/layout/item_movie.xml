@@ -60,7 +60,19 @@
                 android:background="@android:color/darker_gray"
                 android:layout_marginBottom="4dp"/>
 
+            <TextView
+                android:id="@+id/movieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:paddingBottom="4dp"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="4dp"/>
 
         </LinearLayout>
     </LinearLayout>
